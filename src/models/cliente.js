@@ -19,6 +19,13 @@ const Produto = sequelize.define("produto", {
             len: [3, 100]
         }
     },
+    descricao: {
+        allowNull: false,
+        type: Sequelize.STRING(9999),
+        validate: {
+            len: [3, 9999]
+        }
+    },
     preco: {
         allowNull: false,
         type: Sequelize.DOUBLE(),
@@ -26,9 +33,9 @@ const Produto = sequelize.define("produto", {
             len: [1, 999999]
         }
     },
-    dataCadastro: {
+    estoque: {
         allowNull: false,
-        type: Sequelize.DATE()
+        type: Sequelize.INTEGER()
     },
     ativo: {
         allowNull: false,
