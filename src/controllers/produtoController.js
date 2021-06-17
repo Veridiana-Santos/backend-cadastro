@@ -5,15 +5,17 @@ const status = require('http-status');
 // Cria o método Insert, obtendo os dados da request
 exports.Insert = (req, res, next) => {
     const nome = req.body.nome;
+    const descricao = req.body.descricao;
     const preco = req.body.preco;
-    const dataCadastro = req.body.dataCadastro;
+    const estoque = req.body.estoque;
     const ativo = req.body.ativo;
  
     // Popula cada um dos campos do model com os campos recebido na request
     Produto.create({
         nome: nome,
+        descricao:descricao,
         preco: preco,
-        dataCadastro: dataCadastro,
+        estoque: estoque,
         ativo: ativo,
     })
         //then = registra o que queremos que aconteca quando a Promise for resolvida
@@ -55,8 +57,9 @@ exports.SelectDetail = (req, res, next) => {
 exports.Update = (req, res, next) => {
     const id = req.params.id;
     const nome = req.body.nome;
+    const descricao = req.body.descricao;
     const preco = req.body.preco;
-    const dataCadastro = req.body.dataCadastro;
+    const estoque = req.body.estoque;
     const ativo = req.body.ativo;
  
     Produto.findByPk(id)
@@ -64,8 +67,9 @@ exports.Update = (req, res, next) => {
             if (Produto) {
                 Produto.update({
                     nome: nome,
+                    descricao: descricao,
                     preco: preco,
-                    dataCadastro: dataCadastro,
+                    estoque: estoque,
                     ativo: ativo
                 },
                     {
